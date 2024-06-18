@@ -8,28 +8,6 @@
 import Foundation
 
 final class StatisticServiceImplementation: StatisticServiceProtocol {
-    private let storage: UserDefaults = .standard
-    
-    private enum Keys: String {
-        case correctAnswers
-        case totalQuestions
-        case bestGameCorrect
-        case bestGameTotal
-        case bestGameDate
-        case gamesCount
-    }
-    
-    // Приватное свойство для хранения общего количества правильных ответов
-    private var correctAnswers: Int {
-        get { return storage.integer(forKey: Keys.correctAnswers.rawValue) }
-        set { storage.set(newValue, forKey: Keys.correctAnswers.rawValue) }
-    }
-    
-    // Приватное свойство для хранения общего количества вопросов
-    private var totalQuestions: Int {
-        get { return storage.integer(forKey: Keys.totalQuestions.rawValue) }
-        set { storage.set(newValue, forKey: Keys.totalQuestions.rawValue) }
-    }
 
     var gamesCount: Int {
         get { storage.integer(forKey: Keys.gamesCount.rawValue) }
@@ -65,5 +43,28 @@ final class StatisticServiceImplementation: StatisticServiceProtocol {
         if newResult.isBetter(than: bestGame) {
             bestGame = newResult
         }
+    }
+    
+    private let storage: UserDefaults = .standard
+    
+    private enum Keys: String {
+        case correctAnswers
+        case totalQuestions
+        case bestGameCorrect
+        case bestGameTotal
+        case bestGameDate
+        case gamesCount
+    }
+    
+    // Приватное свойство для хранения общего количества правильных ответов
+    private var correctAnswers: Int {
+        get { return storage.integer(forKey: Keys.correctAnswers.rawValue) }
+        set { storage.set(newValue, forKey: Keys.correctAnswers.rawValue) }
+    }
+    
+    // Приватное свойство для хранения общего количества вопросов
+    private var totalQuestions: Int {
+        get { return storage.integer(forKey: Keys.totalQuestions.rawValue) }
+        set { storage.set(newValue, forKey: Keys.totalQuestions.rawValue) }
     }
 }
