@@ -10,10 +10,6 @@ import Foundation
 final class QuestionFactory: QuestionFactoryProtocol {
     private weak var delegate: QuestionFactoryDelegate?
     
-    func setup(delegate: QuestionFactoryDelegate) {
-        self.delegate = delegate
-    }
-    
     private let questions: [QuizQuestion] = [
         QuizQuestion(
             image: "The Godfather",
@@ -64,5 +60,9 @@ final class QuestionFactory: QuestionFactoryProtocol {
         }
         let question = questions[safe: index]
         delegate?.didReceiveNextQuestion(question: question)
+    }
+    
+    func setup(delegate: QuestionFactoryDelegate) {
+        self.delegate = delegate
     }
 }
