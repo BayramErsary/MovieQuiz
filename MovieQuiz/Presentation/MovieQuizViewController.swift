@@ -35,6 +35,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     func didLoadDataFromServer() {
         activityIndicator.isHidden = true
+        mainStackView.isHidden = false
         questionFactory?.requestNextQuestion()
     }
 
@@ -146,11 +147,15 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         hideLoadingIndicator()
         let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
         let retryAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { [weak self] _ in
-            self?.showLoadingIndicator()
-            self?.questionFactory.requestNextQuestion()
+            self?.retryLoadData()
         }
         alert.addAction(retryAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func retryLoadData() {
+        showLoadingIndicator()
+        questionFactory.loadData()
     }
     
     private func enableButtons() {
