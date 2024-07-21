@@ -1,13 +1,8 @@
-//
-//  StatisticService.swift
-//  MovieQuiz
-//
-//  Created by Байрам Джанкулиев on 16.06.2024.
-//
+
 
 import Foundation
 
-final class StatisticServiceImplementation: StatisticServiceProtocol {
+final class StatisticService: StatisticServiceProtocol {
 
     var gamesCount: Int {
         get { storage.integer(forKey: Keys.gamesCount.rawValue) }
@@ -56,13 +51,11 @@ final class StatisticServiceImplementation: StatisticServiceProtocol {
         case gamesCount
     }
     
-    // Приватное свойство для хранения общего количества правильных ответов
     private var correctAnswers: Int {
         get { return storage.integer(forKey: Keys.correctAnswers.rawValue) }
         set { storage.set(newValue, forKey: Keys.correctAnswers.rawValue) }
     }
     
-    // Приватное свойство для хранения общего количества вопросов
     private var totalQuestions: Int {
         get { return storage.integer(forKey: Keys.totalQuestions.rawValue) }
         set { storage.set(newValue, forKey: Keys.totalQuestions.rawValue) }

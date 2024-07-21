@@ -1,9 +1,4 @@
-//
-//  GameResult.swift
-//  MovieQuiz
-//
-//  Created by Байрам Джанкулиев on 16.06.2024.
-//
+
 
 import Foundation
 
