@@ -1,9 +1,4 @@
-//
-//  QuestionFactory.swift
-//  MovieQuiz
-//
-//  Created by Байрам Джанкулиев on 10.06.2024.
-//
+
 
 import Foundation
 
